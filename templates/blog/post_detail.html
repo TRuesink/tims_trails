@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block banner %}
+	<div class='banner' style='background-image: url({{ post.post_image.url }});'>
+		<h1 class='banner-title-text'>{{ post.title }}</h1>
+	</div>
+{% endblock %}
+
+{% block content %}
+
+<div class='post-detail-container'>
+	<h1>{{ post.title }}</h1>
+	<h4>{{ post.description }}</h4>
+	<div class='author-header'>
+		<h6>By: {{ post.author }}</h6>
+		<h6>{{ post.created|date:"F d, Y" }}</h6>
+	</div>
+	<div class='post-tag-container'>
+		{% for tag in post.tags.all %}
+			<a href="{% url 'blog:tag-list' tag.slug %}">
+				<div class='badge badge-pill post-badge-tt'>
+					{{tag}}
+				</div>
+			</a>
+		{% endfor %}
+	</div>
+	<hr>
+	<p>{{ post.content|safe }}</p>
+</div>
+
+<h2 class='comment-title'>Comments</h2>
+
+<div class='comment-box'>
+{% for comment in post.comments.all %}
+	<div class='comment-container'>
+		<div class='comment-container-2'>
+			<h5>{{ comment.name }}</h5>
+			<p>{{ comment.created|date:"F d, Y" }}</p>
+		</div>
+		<p>{{ comment.content }}</p>
+		<hr>
+	</div>
+
+{% endfor %}
+</div>
+
+{% endblock %}
+
+{% block reply %}
+<div class='reply-box'>
+	<h1>Leave a Reply</h1>
+	<form method="post" action="{% url 'blog:detail' post.slug %}">
+		{% csrf_token %}
+		{{ c_form|crispy }}
+		<button type="submit" class="btn btn-tt">Leave Reply</button>
+	</form>
+</div>
+{% endblock %}
+
+
+
+

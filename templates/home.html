@@ -1,0 +1,68 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block banner %}
+	<div class='banner' style='background-image: url("/static/images/trails_banner.jpg");'>
+		<h1 class='banner-title-text'>Tim's Trails</h1>
+	</div>
+{% endblock %}
+{% block content %}
+
+<div class='home-content'>
+	<h2>A Beginners Guide to All Things Backpacking</h2>
+	<hr align='center'>
+	<p>
+		Welcome to Tim's Trails! Whether you're a brand new backpacker, or someone looking for new trip ideas, I'm glad your here. The purpose of Tim's Trails is to provide a simple, no-frills approach to backpacking. You see, the internet is saturated with advice, how-tos, and guides on backpacking. Everyone has different likes and dislikes, and it’s hard to know what information to trust, especially when you’re brand new. I'm hoping this is where I can help... Like you might be, I was once a novice backpacker. I didn't take a course, I had no one to show me the ropes. I learned by making mistakes. Now I've come up with what I think are the essentials - It's what you need to get started.
+	</p>
+	<hr align='center'>
+</div>
+
+<div class='home-content'>
+	<h2>Where to Begin...</h2>
+	<hr align='center'>
+	<div class='banner' style='background-image: url("/static/images/blog_banner.jpg");'>
+		<a href="">
+			<div class='home-banner-filter'>
+				<h1>Blog</h1>
+				<p>als;kdfja;lsdkfja;sdkj</p>
+			</div>
+		</a>
+	</div>
+	<hr align='center'>
+
+	<div class='banner' style='background-image: url("/static/images/gear_banner.jpg");'>
+		<a href="">
+			<div class='home-banner-filter'>
+				<h1>Gear</h1>
+				<p>Quality gear does not have to cost thousands of dollars. Build a gear collection – on a budget – that will last a lifetime.</p>
+			</div>
+		</a>
+	</div>
+	<hr align='center'>
+
+	<div class='banner' style='background-image: url("/static/images/cooking_banner.jpg");'>
+		<a href="">
+			<div class='home-banner-filter'>
+				<h1>Cooking</h1>
+				<p>It’s easy to under or over-pack food for a backpacking trip. Use these grocery lists, meal plans and recipes for any type of adventure.</p>
+			</div>
+		</a>
+	</div>
+	<hr align='center'>
+
+	<div class='banner' style='background-image: url("/static/images/trails_banner.jpg");'>
+		<a href="">
+			<div class='home-banner-filter'>
+				<h1>Trails</h1>
+				<p>Choosing where to go for a first backpacking trip can be overwhelming. Get your questions answered with reviews of trails I’ve explored and loved.</p>
+			</div>
+		</a>
+	</div>
+	<hr align='center'>
+</div>
+
+{% endblock %}

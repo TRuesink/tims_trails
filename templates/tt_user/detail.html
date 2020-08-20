@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block content %}
+
+{{ user.username }}
+<br>
+<br>
+Bio
+<br>
+<br>
+{{ user.bio }}
+<br>
+<br>
+<img src="{{ user.image.url }}">
+
+<a href="{% url 'tt_user:update' user.username %}">Update Profile</a>
+
+{% endblock %}

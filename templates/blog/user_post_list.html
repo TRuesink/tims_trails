@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block banner %}
+	<div class='banner' style='background-image: url("/static/images/blog_banner.jpg");background-position:top;'>
+		<h1 class='banner-title-text'>Posts By {{ posts.first.author }}</h1>
+		<div class='all-tag-container'>
+			<h4>Popular Topics</h4>
+			<hr>
+			<div class='all-tag-container-2'>
+				{% for tag in tags %}
+					<a href="{% url 'blog:tag-list' tag.slug %}">
+						<div class='badge badge-pill all-badge-tt'>
+							{{tag}}
+						</div>
+					</a>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block content %}
+	{% for post in posts %}
+		<div class='post-container'>
+			<div class='post-container-img'>
+				<img id='post-card-image' src="{{ post.post_image.url }}">
+			</div>
+			<div class='post-container-content'>
+				<div class='post-container-text'>
+					<a href="{% url 'blog:detail' post.slug %}">
+						<h3>{{ post.title }}</h3>
+					</a>
+					<p>{{ post.description }}</p>
+				</div>
+				<div class='post-footer'>
+					<h5>{{ post.created|date:"F d, Y" }}</h5>
+					<a href="{% url 'blog:user-list' post.author %}">
+						<h5>{{ post.author }}</h5>
+					</a>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+	<div class='page-num-container'>
+		{% if is_paginated %}
+			{% if page_obj.has_previous %}
+				<a class='btn btn-outline-tt' href="?page=1">First</a>
+				<a class='btn btn-outline-tt' href="?page={{ page_obj.previous_page_number }}">Previous</a>
+			{% endif %}
+
+			{% for num in page_obj.paginator.page_range %}
+				{% if page_obj.number == num %}
+					<a class='btn btn-tt' href="?page={{ num }}">{{ num }}</a>
+				{% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3'%}
+					<a class='btn btn-outline-tt' href="?page={{ num }}">{{ num }}</a>
+				{% endif %}
+			{% endfor %}
+
+			{% if page_obj.has_next %}
+				<a class='btn btn-outline-tt' href="?page={{ page_obj.next_page_number }}">Next</a>
+				<a class='btn btn-outline-tt' href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+			{% endif %}
+		{% endif %}
+	</div>
+{% endblock %}
