@@ -84,6 +84,7 @@ class AboutMeView(TemplateView):
 	def post(self, request, *args, **kwargs):
 		view = IndependentSubscribeView.as_view()
 		s_form = SubscriberForm(request.POST)
+		s_form.save()
 		return view(request, *args, **kwargs)
 
 class ContactMeView(FormView):
@@ -94,6 +95,7 @@ class ContactMeView(FormView):
 
 	def form_valid(self, form):
 		form.send_email()
+		form.save()
 		return super().form_valid(form)
 
 
