@@ -137,6 +137,8 @@ STATICFILES_DIRS = [
     'static/',
 ]
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
