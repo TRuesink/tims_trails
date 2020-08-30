@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}About{% endblock %}
+
+{% block banner %}
+	<div class='banner' style='background-image: url("/static/images/gear_banner.jpg");'>
+		<h1 class='banner-title-text'>About Me</h1>
+	</div>
+{% endblock %}
+
+{% block content %}
+
+<div class='general-content'>
+	<h1>ABOUT ME</h1>
+	<hr>
+	<p id='legal'>
+		I was never a boy scout. My father was not some vagabonding nature man who taught me everything I know. I never took a wilderness experience class in college… Still, somewhere along the way, I picked up an insatiable hunger for backpacking. It was a cheap way travel, the challenge and solitude were attractive, and the instagram potential was huge. But I didn’t know where to start. I had three options: The first and most expensive option was paying for a guided trip (> $2,000). The second option was just doing it (after all its just walking…), and the third option was continuing to ogle at google photos of mountains, while doing nothing. Thinking about it now, the first and third options weren’t really options. So I bought my first backpack, enlisted some traveling companions, and planned my first trip… we did 80% of that trip wrong, but the 20% we did right was worth it. I took my mistakes (from this trip and the ones that followed) and refined my gear list, cooking strategies, and trip planning. I learned through trial and error. It wasn’t efficient, but it stuck, and now I want to share what I’ve learned. My hope is that you can learn from my mistakes, rather than your own, and take on your first backpacking trip with confidence.
+	</p>
+	<h1>TIM'S TRAILS</h1>
+	<hr>
+	<p id='legal'>
+		Fear of the unknown can paralyze us into inaction. Especially when it comes to backpacking, which at first glance, seems far more dangerous and intimidating than it actually is. That said, there are things you need to know in order to have a successful trip. The big ones are (1) the right gear, (2) a solid cooking strategy, and (3) trip planning. These are all things I got wrong for my first few backpacking trips. Tim’s Trails is the fruit of those mistakes. This resource provides everything you need to safely embark on your first adventure, and enjoy it! And it’s all based on the experience of someone (Tim) who has been in your shoes. Happy backpacking!
+	</p>
+	<p id='legal'>- Tim</p>
+</div>
+
+{% endblock %}
+
+{% block reply %}
+<div class='reply-box'>
+	<h1>Subscribe</h1>
+	<form method="post" action="{% url 'home' %}">
+		{% csrf_token %}
+		{{ s_form|crispy }}
+		<button type="submit" class="btn btn-tt">Subscribe</button>
+	</form>
+</div>
+
+{% endblock %}

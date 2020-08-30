@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
+
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block banner %}
@@ -31,19 +32,46 @@
 	<p>{{ post.content|safe }}</p>
 </div>
 
-<h2 class='comment-title'>Comments</h2>
+<!-- Comment with nested comments -->
 
+<h2 class='comment-title'>Comments</h2>
 <div class='comment-box'>
-{% for comment in post.comments.all %}
-	<div class='comment-container'>
+{% for comment in comments %}
+    <div class='comment-container'>
 		<div class='comment-container-2'>
-			<h5>{{ comment.name }}</h5>
-			<p>{{ comment.created|date:"F d, Y" }}</p>
+			<p class='comment-author'>{{ comment.name }}: </p>
+			<p>{{ comment.content }}</p>
 		</div>
-		<p>{{ comment.content }}</p>
+		<div class='comment-container-2'>
+			<p id='comment-date'>{{ comment.created|date:"F d, Y" }}</p>
+			<p id='comment-reply'>
+				<a data-toggle="collapse" href="#comment_{{ forloop.counter }}" role="button" aria-expanded="false" aria-controls="comment_{{ forloop.counter }}">
+				    Reply
+				</a>
+			</p>
+		</div>
+		{% for reply in comment.replies.all %}
+	        <div class='comment-container' id='reply-container'>
+				<div class='comment-container-2'>
+					<p class='comment-author'>{{ reply.name }}: </p>
+					<p>{{ reply.content }}</p>
+				</div>
+				<div class='comment-container-2'>
+					<p id='comment-date'>{{ reply.created|date:"F d, Y" }}</p>
+				</div>
+			</div>
+	    {% endfor %}
+	    <div class="collapse" id="comment_{{ forloop.counter }}">
+			<form action="." method="post">
+		        {{ c_form.as_p }}
+		        {% csrf_token %}
+		        <!-- Hidden input for parent comment.id -->
+		        <input type="hidden" name="parent_id" value="{{ comment.id }}">
+		        <input class="btn btn-tt" type="submit" value="Reply">
+		    </form>
+		</div>
 		<hr>
 	</div>
-
 {% endfor %}
 </div>
 

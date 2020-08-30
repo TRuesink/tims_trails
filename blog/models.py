@@ -29,12 +29,43 @@ class Comment(TimeStampedModel):
 	email = models.EmailField(max_length=255)
 	content = models.TextField(null=True)
 	post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+	active = models.BooleanField(default=True)
+	parent = models.ForeignKey('self', null=True, related_name='replies', on_delete=models.CASCADE)
+
+	class Meta:
+		ordering = ('created',)
 
 	def get_absolute_url(self):
 		return reverse('blog:detail', kwargs={'slug':self.slug})
 
 	def __str__(self):
 		return f'{self.name} - comment'
+
+
+class Subscriber(TimeStampedModel):
+	name = models.CharField(max_length=255)
+	email = models.EmailField(max_length=255)
+
+	def get_absolute_url(self):
+		return reverse('home')
+
+	def __str__(self):
+		return f'{self.name} - subscriber'
+
+
+class Contact(TimeStampedModel):
+	name = models.CharField(max_length=255)
+	email = models.EmailField(max_length=255)
+	content = models.TextField(null=True)
+
+	def get_absolute_url(self):
+		return reverse('home')
+
+	def __str__(self):
+		return f'{self.name} - contact'
+
+
+
 
 
 

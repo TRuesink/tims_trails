@@ -14,6 +14,10 @@ body {
 	background-color: #f6f6f6;
 }
 
+.general-content form {
+	width:100%;
+}
+
 .btn-tt {
 	border: 2px solid #336739;
 	background-color:#336739;
@@ -48,7 +52,18 @@ body {
 	background-color:white;
 	display:flex;
 	flex-direction:row;
-	justify-content:center;
+	justify-content:space-between;
+	align-items: center;
+	padding-right:20px;
+	padding-left:20px;
+	padding-top:30px;
+}
+
+.custom-header a {
+	font-weight: 900;
+	color:grey;
+	font-size: 16px;
+	font-family:Bradley Hand !important;
 }
 
 .custom-header-scroll {
@@ -205,7 +220,7 @@ body {
 	width:75%;
 	display:flex;
 	flex-direction:column;
-	height:2500px;
+	margin-bottom:50px;
 }
 
 .banner-title-text {
@@ -222,17 +237,22 @@ body {
 }
 
 .about-me-card {
-	width:330px;
 	height:600px;
 	background-color:white;
 	margin:10px;
 	border: 2px solid #D3D3D3;
 	border-radius:10px;
 	display:flex;
-	align-items:flex-start;
-	justify-content:center;
+	flex-direction: column;
+	align-items:center;
+	justify-content:flex-start;
 	padding:10px;
 
+}
+
+.about-me-card p {
+	padding-top:20px;
+	text-align:center;
 }
 
 .about-me-card-scroll {
@@ -242,7 +262,7 @@ body {
 
 .about-me-card-bottom {
 	position:relative;
-	top:1800px;
+	top:2100px;
 }
 
 .about-me-img {
@@ -377,11 +397,27 @@ hr {
 
 .footer {
 	padding-bottom:25px;
-	height:200px;
+	height:150px;
 	background-color:grey;
 	display:flex;
-	justify-content: center;
-	align-items:flex-end;
+	flex-direction:column;
+	justify-content: flex-end;
+	align-items:center;
+	color:white;
+}
+
+.footer-2 {
+	padding:25px;
+	height:150px;
+	background-color:#333333;
+	display:flex;
+	flex-direction: column;
+	justify-content: left;
+	align-items:flex-start;
+	color:white;
+}
+
+.footer-2 a {
 	color:white;
 }
 
@@ -389,7 +425,7 @@ hr {
 	margin:10px;
 	padding-top:50px;
 	padding-right:100px;
-	padding-left:100px;
+	padding-left:20px;
 	background-color:white;
 	border-radius:10px;
 	display:flex;
@@ -397,31 +433,51 @@ hr {
 	border: 2px solid #D3D3D3;
 }
 
+.comment-author {
+	font-weight:900;
+	font-style: italic;
+	margin-right:5px;
+}
+
 .comment-container {
 	display:flex;
 	flex-direction: column;
 }
 
+.comment-container form {
+	width:50%;
+}
+
+#reply-container {
+	margin-top:30px;
+	margin-left:100px;
+}
+
 .comment-container-2 {
 	display:flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: flex-start;
 }
 
-.comment-container-2 p {
-	font-style:italic;
+#comment-date {
+	color:grey;
+	font-weight: 450;
+	font-size:14px;
 }
 
-.comment-container-2 h5 {
-	font-style:bold;
+#comment-reply {
+	color:grey;
+	font-weight: 900;
+	font-size:14px;
+	margin-left:40px;
 }
 
 .reply-box {
 	padding-left:300px;
 	padding-right:300px;
 	padding-top:50px;
+	padding-bottom:50px;
 	width:100%;
-	height:700px;
 	background-color:#b9cab8;
 	color:black;
 }
@@ -441,7 +497,7 @@ hr {
 	justify-content: center;
 }
 
-.home-content {
+.home-content, .general-content {
 	border: 2px solid #D3D3D3;
 	margin:10px;
 	padding-top:50px;
@@ -452,12 +508,19 @@ hr {
 	border-radius:10px;
 	display:flex;
 	flex-direction:column;
-	justify-content: flex-start;
+	justify-content: center;
 	align-items: center;
+}
+
+#legal {
+	text-align: left;
+	align-self: flex-start;
 }
 
 .home-content h2 {
 	font-family: Bradley Hand;
+	text-align:center;
+
 
 }
 
@@ -536,6 +599,7 @@ hr {
 	height:500px;
 	border-radius:10px;
 }
+
 
 
 

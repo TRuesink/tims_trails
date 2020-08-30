@@ -1,4 +1,6 @@
 {% load static %}
+{% load social_widgets %}
+{% load crispy_forms_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +31,10 @@
 
   <body>
 	  <div class='custom-header'>
+	  	<h6>
+	  		<a href="{% url 'about' %}">About Me</a> | <a href="{% url 'subscribe' %}">Subscribe</a> | <a href="{% url 'contact' %}">Contact Me</a>
+	  	</h6>
+	  	<p>{% social_widget_render 'instagram/badge.html' size=32 username='timstrails' %}</p>
 	  </div>
 	  <div class="custom-navbar-container">
 	  	<div class='custom-navbar-left'>
@@ -39,7 +45,7 @@
 		        	Blog
 		      	</div>
 	      	</a>
-	      	<a href="#">
+	      	<a href="{% url 'gear:home' %}">
 		      	<div class="custom-nav-item">
 		        	Gear
 		      	</div>
@@ -49,12 +55,12 @@
 			    	<img class='rounded-circle border border-dark bg-sky' src="{% static 'images/logo.png' %}" width="80" height="80" alt="site logo">
 				</a>
 		  	</div>
-		  	<a href="#">
+		  	<a href="{% url 'cooking:home' %}">
 		      	<div class="custom-nav-item">
 		        	Cooking
 		      	</div>
 	      	</a>
-	      	<a href="#">
+	      	<a href="{% url 'trails:home' %}">
 		      	<div class="custom-nav-item">
 		        	Trails
 		      	</div>
@@ -75,19 +81,37 @@
 		<div class='blog-sidebar'>
 			<div class='about-me-card'>
 				<div class='about-me-img'>
-					<a href="">
+					<a href="{% url 'about' %}">
 						<div class='about-me-filter'>
 							<h5>Learn More</h5>
 						</div>
 					</a>
 				</div>
+				<p>
+					Hi! My name is Tim and I am "self-taught" backpacker. I learned most of what I know the hard way - by making mistakes. Tim's Trails is the fruit of those mistakes, as well as a documentation of my adventures. <a href="{% url 'about' %}">Read more</a>
+				</p>
 			</div>
 		</div>
   	</main>
   	{% block reply %}
 	{% endblock %}
+	<div class='footer-2'>
+		<h6>
+			<a href="{% url 'terms' %}">Terms and Conditions</a>
+		</h6>
+		<h6>
+			<a href="{% url 'copyright' %}">Copyright Notice</a>
+		</h6>
+		<h6>
+			<a href="{% url 'privacy' %}">Privacy Policy</a>
+		</h6>
+		<h6>
+			<a href="{% url 'disclaimer' %}">Disclaimer</a>
+		</h6>
+	</div>
   	<div class='footer'>
-  		<h6>Copyright © 2020 Developed by Tim Ruesink</h6>
+  		<h6>Madison, WI | Email: timstrails@gmail.com</h6>
+  		<h6>Copyright © 2020 Developed by Tim's Trails</h6>
   	</div>
 
 
@@ -108,24 +132,6 @@
 	    	$('.custom-header').removeClass('custom-header-scroll');
 	    	$(".custom-nav-img").removeClass("custom-nav-img-scroll");
 	    }
-	  });
-	</script>
-	<script>
-	  $(window).on('scroll', function() {
-	    if ($(window).scrollTop() > 760) {
-	    	if ($(window).scrollTop() < 2560) {
-	    		$(".about-me-card").removeClass("about-me-card-bottom");
-	    		$(".about-me-card").addClass("about-me-card-scroll");
-	    	}
-	    	else {
-	    		$(".about-me-card").removeClass("about-me-card-scroll");
-	    		$(".about-me-card").addClass("about-me-card-bottom");
-	    	}
-	  	}
-	  	else if ($(window).scrollTop() < 760) {
-	  		$(".about-me-card").removeClass("about-me-card-scroll");
-	  		$(".about-me-card").removeClass("about-me-card-bottom");
-	  	}
 	  });
 	</script>
   </body>

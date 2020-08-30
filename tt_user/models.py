@@ -10,7 +10,7 @@ class CustomUser(AbstractUser):
 
     def get_absolute_url(self):
     	return reverse('home')
-
+    '''
     def save(self, *args, **kwargs):
     	super().save(*args, **kwargs)
 
@@ -20,6 +20,8 @@ class CustomUser(AbstractUser):
     		output_size = (300, 300)
     		img.thumbnail(output_size)
     		img.save(self.image.path)
+    '''
 
     def __str__(self):
         return self.username
+

@@ -1,6 +1,7 @@
 <!-- templates/home.html -->
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}Home{% endblock %}
 
@@ -25,17 +26,17 @@
 	<h2>Where to Begin...</h2>
 	<hr align='center'>
 	<div class='banner' style='background-image: url("/static/images/blog_banner.jpg");'>
-		<a href="">
+		<a href="{% url 'blog:list' %}">
 			<div class='home-banner-filter'>
 				<h1>Blog</h1>
-				<p>als;kdfja;lsdkfja;sdkj</p>
+				<p>A sort of "catch all" for my advice, tips, tricks and stories on backpacking for the beginner.</p>
 			</div>
 		</a>
 	</div>
 	<hr align='center'>
 
 	<div class='banner' style='background-image: url("/static/images/gear_banner.jpg");'>
-		<a href="">
+		<a href="{% url 'gear:home' %}">
 			<div class='home-banner-filter'>
 				<h1>Gear</h1>
 				<p>Quality gear does not have to cost thousands of dollars. Build a gear collection – on a budget – that will last a lifetime.</p>
@@ -45,7 +46,7 @@
 	<hr align='center'>
 
 	<div class='banner' style='background-image: url("/static/images/cooking_banner.jpg");'>
-		<a href="">
+		<a href="{% url 'cooking:home' %}">
 			<div class='home-banner-filter'>
 				<h1>Cooking</h1>
 				<p>It’s easy to under or over-pack food for a backpacking trip. Use these grocery lists, meal plans and recipes for any type of adventure.</p>
@@ -55,7 +56,7 @@
 	<hr align='center'>
 
 	<div class='banner' style='background-image: url("/static/images/trails_banner.jpg");'>
-		<a href="">
+		<a href="{% url 'trails:home' %}">
 			<div class='home-banner-filter'>
 				<h1>Trails</h1>
 				<p>Choosing where to go for a first backpacking trip can be overwhelming. Get your questions answered with reviews of trails I’ve explored and loved.</p>
@@ -64,5 +65,17 @@
 	</div>
 	<hr align='center'>
 </div>
+{% endblock %}
+
+{% block reply %}
+<div class='reply-box'>
+	<h1>Subscribe</h1>
+	<form method="post" action="{% url 'home' %}">
+		{% csrf_token %}
+		{{ s_form|crispy }}
+		<button type="submit" class="btn btn-tt">Subscribe</button>
+	</form>
+</div>
 
 {% endblock %}
+

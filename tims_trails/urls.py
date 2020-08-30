@@ -22,12 +22,20 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls', namespace='blog')),
+    path('gear/', include('gear.urls', namespace='gear')),
+    path('cooking/', include('cooking.urls', namespace='cooking')),
+    path('trails/', include('trails.urls', namespace='trails')),
+    path(route='terms-and-conditions/', view=TTUser_views.TermsConditionsView.as_view(), name='terms'),
+    path(route='copyright-notice/', view=TTUser_views.CopyrightView.as_view(), name='copyright'),
+    path(route='privacy-policy/', view=TTUser_views.PrivacyPolicyView.as_view(), name='privacy'),
+    path(route='disclaimer/', view=TTUser_views.DisclaimerView.as_view(), name='disclaimer'),
+    path(route='about-me/', view=TTUser_views.AboutMeView.as_view(), name='about'),
 	path(route='', view=TTUser_views.HomeView.as_view(), name='home'),
+    path(route='subscribe', view=TTUser_views.IndependentSubscribeView.as_view(), name='subscribe'),
+    path(route='contact-me', view=TTUser_views.ContactMeView.as_view(), name='contact'),
     path('', include('tt_user.urls', namespace='tt_user')),
-    path('ckeditor/', include(
-        'ckeditor_uploader.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
-
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

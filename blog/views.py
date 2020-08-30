@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from tt_user.models import CustomUser
-from .models import Post, Comment
+from .models import Post, Comment, Subscriber
 from .forms import CommentForm
 from taggit.models import Tag
 
@@ -27,11 +27,30 @@ class PostDetailView(DetailView):
 
 
 def PostDetailView(request, slug):
+	#get the current post object
+	post_obj = get_object_or_404(Post, slug=slug)
 
-	post_obj = Post.objects.get(slug=slug)
+	comments = post_obj.comments.filter(active=True, parent__isnull=True)
+
 	if request.method == 'POST':
 		c_form = CommentForm(request.POST)
 		if c_form.is_valid():
+			parent_obj = None
+			#get parent ID from hidden input
+			try:
+				parent_id = int(request.POST.get('parent_id'))
+			except:
+				parent_id = None
+			# if parent_id has been submitted get parent_obj id
+			if parent_id:
+				parent_obj = Comment.objects.get(id=parent_id)
+				#if parent object exists
+				if parent_obj:
+					reply_comment = c_form.save(commit=False)
+					#assign parent object to reply comment
+					reply_comment.parent = parent_obj
+
+			# normal comment
 			comment_obj = c_form.save(commit=False)
 			comment_obj.post = post_obj
 			comment_obj.save()
@@ -41,6 +60,7 @@ def PostDetailView(request, slug):
 	context = {
 		'post':post_obj,
 		'c_form':c_form,
+		'comments':comments,
 	}
 	return render(request, 'blog/post_detail.html', context)
 
