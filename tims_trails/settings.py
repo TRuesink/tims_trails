@@ -27,10 +27,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
-#DEBUG = True
+#DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
+DEBUG = True
 
-ALLOWED_HOSTS = ['tims-trails.herokuapp.com','http://127.0.0.1:8000/']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -163,20 +163,19 @@ EMAIL_HOST_PASSWORD = os.environ.get('TT_PASS')
 EMAIL_USE_TLS = True
 
 
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-AWS_S3_REGION_NAME = 'us-east-2' #change to your region
-#AWS_S3_SIGNATURE_VERSION = 's3v4'
+#AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+#AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+#AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+#AWS_S3_REGION_NAME = 'us-east-2' #change to your region
 
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-AWS_S3_ADDRESSING_STYLE = "virtual"
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#AWS_S3_FILE_OVERWRITE = False
+#AWS_DEFAULT_ACL = None
+#AWS_S3_ADDRESSING_STYLE = "virtual"
 
-django_heroku.settings(locals())
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+#django_heroku.settings(locals())
 
 
 
