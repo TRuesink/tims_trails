@@ -1,3 +1,8 @@
+/* Tims Trails CSS */
+
+/* ------------ */
+
+/* ------ Global styles ------ */
 h1, h2, h3, h4, h5, h6, p, a {
 	font-family: arial;
 }
@@ -14,8 +19,10 @@ body {
 	background-color: #f6f6f6;
 }
 
-.general-content form {
+hr {
 	width:100%;
+	text-align:left;
+	margin-left:0;
 }
 
 .btn-tt {
@@ -45,7 +52,10 @@ body {
 	border: 2px solid #336739;
 	color:white;
 }
+/* ------------ */
 
+
+/* ------ Navigation Bar ------ */
 .custom-header {
 	height:60px;
 	width:100%;
@@ -77,7 +87,6 @@ body {
 	background-color:white;
 	display:flex;
 	flex-direction:row;
-
 }
 
 .navbar-scroll {
@@ -156,81 +165,10 @@ body {
 	color:white;
 	text-decoration-line: none;
 }
+/* ------------ */
 
-.nav-spacer {
-	height:120px;
-	background-color: #b9cab8;
-}
-
-.post-container {
-	height:300px;
-	margin:10px;
-	background-color:white;
-	border-radius:10px;
-	display:flex;
-	flex-direction:row;
-	border: 2px solid #D3D3D3;
-}
-
-.post-container-img {
-	display:flex;
-	width:40%;
-	flex-direction: column;
-	justify-content: center;
-	align-items:center;
-	border-radius:10px;
-}
-
-#post-card-image {
-	width:95%;
-	height:95%;
-	object-fit: cover;
-	border-radius:10px;
-}
-
-.post-container-content {
-	padding:10px;
-	width:60%;
-	display:flex;
-	flex-direction:column;
-	justify-content: space-between;
-}
-
-.post-container-content hr {
-	margin:4px;
-}
-
-.post-container-text {
-	display:flex;
-	flex-direction:column;
-}
-
-.post-footer {
-	display:flex;
-	flex-direction:row;
-	justify-content: space-between;
-}
-
-.content-main {
-	display:flex;
-	flex-direction:row;
-}
-
-.blog-content-container {
-	width:75%;
-	display:flex;
-	flex-direction:column;
-	margin-bottom:50px;
-}
-
-.banner-title-text {
-	color:white;
-	font-size: 60px;
-	position:absolute;
-	font-family:Bradley Hand;
-}
-
-.blog-sidebar {
+/* ------ Side bar ------ */
+.sidebar {
 	width:25%;
 	display:flex;
 	flex-direction:column;
@@ -247,22 +185,11 @@ body {
 	align-items:center;
 	justify-content:flex-start;
 	padding:10px;
-
 }
 
 .about-me-card p {
 	padding-top:20px;
 	text-align:center;
-}
-
-.about-me-card-scroll {
-	position:fixed;
-	top:50px;
-}
-
-.about-me-card-bottom {
-	position:relative;
-	top:2100px;
 }
 
 .about-me-img {
@@ -293,52 +220,42 @@ body {
 .about-me-img a:hover {
 	text-decoration-line: none;
 }
+/* ------------ */
 
-.post-detail-container {
-	margin:10px;
-	padding-top:50px;
-	padding-right:100px;
-	padding-left:100px;
-	padding-bottom:50px;
-	background-color:white;
-	border-radius:10px;
-	display:flex;
-	flex-direction:column;
-	border: 2px solid #D3D3D3;
-	text-align: justify;
-}
 
-.author-header {
-	display:flex;
-	flex-direction:row;
-	justify-content: space-between;
-}
 
-.author-header h6 {
-	margin-top:20px;
-	font-style: italic;
-}
 
-.post-detail-container h4 {
-	font-style: italic;
-	color:#336739;
-}
 
-.post-detail-container h1 {
-	font-style: bold;
-	text-transform: uppercase;
-	margin-bottom:10px;
-	text-align:center;
-}
 
-.post-tag-containter {
-	display: flex;
-	flex-direction:row;
-}
 
-.post-badge-tt {
+
+/* ------ Banner Image ------ */
+.banner-title-text {
 	color:white;
-	background-color:#336739;
+	font-size: 60px;
+	position:absolute;
+	font-family:Bradley Hand;
+}
+
+.banner {
+	background-color: rgba(0,0,0,.5);
+	background-blend-mode: multiply;
+	width:100%;
+	height:700px;
+	display:flex;
+	align-items:center;
+	justify-content: center;
+	background-size: cover;
+	background-position: center;
+}
+
+.banner a {
+	height:100%;
+	width:100%;
+}
+
+.banner a:hover {
+	text-decoration-line: none;
 }
 
 .all-tag-container {
@@ -388,39 +305,220 @@ body {
 .post-badge-tt:hover, .all-badge-tt:hover {
 	background-color:#214225;
 }
+/* ------------ */
 
-hr {
-	width:100%;
-	text-align:left;
-	margin-left:0;
+
+
+
+
+
+
+
+/* ------ General Content ------ */
+.content-main {
+	display:flex;
+	flex-direction:row;
 }
 
-.footer {
-	padding-bottom:25px;
-	height:150px;
-	background-color:grey;
+.content-container {
+	width:75%;
 	display:flex;
 	flex-direction:column;
-	justify-content: flex-end;
-	align-items:center;
-	color:white;
+	margin-bottom:50px;
 }
 
-.footer-2 {
-	padding:25px;
-	height:150px;
-	background-color:#333333;
+.home-content, .general-content {
+	border: 2px solid #D3D3D3;
+	margin:10px;
+	padding-top:50px;
+	padding-bottom:50px;
+	padding-left:100px;
+	padding-right:100px;
+	background-color:white;
+	border-radius:10px;
 	display:flex;
+	flex-direction:column;
+	justify-content: center;
+	align-items: center;
+}
+
+.general-content form {
+	width:100%;
+}
+/* ------------ */
+
+
+
+/* ------ Home Page ------ */
+.home-content h2 {
+	font-family: Bradley Hand;
+	text-align:center;
+}
+
+.home-content hr {
+	width:50%;
+	margin:auto;
+	margin-bottom:10px;
+	margin-top:10px;
+}
+
+.home-banner-filter {
+	background-color:rgba(0, 0, 0, 0);
+	height:100%;
+	width:100%;
+	display:flex;
+	align-items:center;
+	justify-content: center;
+	border-radius:10px;
+	transition: 0.3s;
+	color:rgba(0, 0, 0, 0);
+	position:relative;
+}
+
+.home-banner-filter:hover {
+	background-color:rgba(0, 0, 0, 0.4);
+	color:white;
+}
+
+.home-banner-filter h1 {
+	position: absolute;
+	color:white;
+	font-family: Bradley Hand;
+}
+
+.home-banner-filter p {
+	margin-top:200px;
+	padding-left:100px;
+	padding-right:100px;
+	text-align:center;
+}
+
+.home-content .banner {
+	height:500px;
+	border-radius:10px;
+}
+/* ------------ */
+
+
+
+/* ------ Blog ------ */
+.post-container {
+	height:300px;
+	margin:10px;
+	background-color:white;
+	border-radius:10px;
+	display:flex;
+	flex-direction:row;
+	border: 2px solid #D3D3D3;
+}
+
+.post-container-img {
+	display:flex;
+	width:40%;
 	flex-direction: column;
-	justify-content: left;
-	align-items:flex-start;
-	color:white;
+	justify-content: center;
+	align-items:center;
+	border-radius:10px;
 }
 
-.footer-2 a {
-	color:white;
+#post-card-image {
+	width:95%;
+	height:95%;
+	object-fit: cover;
+	border-radius:10px;
 }
 
+.post-container-content {
+	padding:10px;
+	width:60%;
+	display:flex;
+	flex-direction:column;
+	justify-content: space-between;
+}
+
+.post-container-content hr {
+	margin:4px;
+}
+
+.post-container-text {
+	display:flex;
+	flex-direction:column;
+}
+
+.post-footer {
+	display:flex;
+	flex-direction:row;
+	justify-content: space-between;
+}
+/* ------------ */
+
+
+
+
+
+
+
+/* ------ Post Detail ------ */
+.post-detail-container {
+	margin:10px;
+	padding-top:50px;
+	padding-right:100px;
+	padding-left:100px;
+	padding-bottom:50px;
+	background-color:white;
+	border-radius:10px;
+	display:flex;
+	flex-direction:column;
+	border: 2px solid #D3D3D3;
+	text-align: justify;
+}
+
+.author-header {
+	display:flex;
+	flex-direction:row;
+	justify-content: space-between;
+}
+
+.author-header h6 {
+	margin-top:20px;
+	font-style: italic;
+}
+
+.post-detail-container h4 {
+	font-style: italic;
+	color:#336739;
+}
+
+.post-detail-container h1 {
+	font-style: bold;
+	text-transform: uppercase;
+	margin-bottom:10px;
+	text-align:center;
+}
+
+.post-tag-containter {
+	display: flex;
+	flex-direction:row;
+}
+
+.post-badge-tt {
+	color:white;
+	background-color:#336739;
+}
+
+.post-banner {
+	width:100%;
+	height:700px;
+	display:flex;
+	align-items:center;
+	justify-content: center;
+	background-size: cover;
+	border-radius:10px;
+	background-position: center;
+}
+/* ------------ */
+
+/* ------ Comments ------ */
 .comment-box {
 	margin:10px;
 	padding-top:50px;
@@ -490,6 +588,56 @@ hr {
 	margin-top:20px;
 	text-align:center;
 }
+/* ------------ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ------ Footer ------ */
+
+.footer {
+	padding-bottom:25px;
+	height:150px;
+	background-color:grey;
+	display:flex;
+	flex-direction:column;
+	justify-content: flex-end;
+	align-items:center;
+	color:white;
+}
+
+.footer-2 {
+	padding:25px;
+	height:150px;
+	background-color:#333333;
+	display:flex;
+	flex-direction: column;
+	justify-content: left;
+	align-items:flex-start;
+	color:white;
+}
+
+.footer-2 a {
+	color:white;
+}
 
 .page-num-container {
 	display:flex;
@@ -497,108 +645,20 @@ hr {
 	justify-content: center;
 }
 
-.home-content, .general-content {
-	border: 2px solid #D3D3D3;
-	margin:10px;
-	padding-top:50px;
-	padding-bottom:50px;
-	padding-left:100px;
-	padding-right:100px;
-	background-color:white;
-	border-radius:10px;
-	display:flex;
-	flex-direction:column;
-	justify-content: center;
-	align-items: center;
-}
-
 #legal {
 	text-align: left;
 	align-self: flex-start;
 }
-
-.home-content h2 {
-	font-family: Bradley Hand;
-	text-align:center;
+/* ------------ */
 
 
-}
-
-.home-content hr {
-	width:50%;
-	margin:auto;
-	margin-bottom:10px;
-	margin-top:10px;
-}
-
-.home-banner-filter {
-	background-color:rgba(0, 0, 0, 0);
-	height:100%;
-	width:100%;
-	display:flex;
-	align-items:center;
-	justify-content: center;
-	border-radius:10px;
-	transition: 0.3s;
-	color:rgba(0, 0, 0, 0);
-	position:relative;
-}
-
-.home-banner-filter:hover {
-	background-color:rgba(0, 0, 0, 0.4);
-	color:white;
-}
-
-.home-banner-filter h1 {
-	position: absolute;
-	color:white;
-	font-family: Bradley Hand;
-}
-
-.home-banner-filter p {
-	margin-top:200px;
-	padding-left:100px;
-	padding-right:100px;
-	text-align:center;
-}
 
 
-.post-banner {
-	width:100%;
-	height:700px;
-	display:flex;
-	align-items:center;
-	justify-content: center;
-	background-size: cover;
-	border-radius:10px;
-	background-position: center;
-}
 
-.banner {
-	background-color: rgba(0,0,0,.5);
-	background-blend-mode: multiply;
-	width:100%;
-	height:700px;
-	display:flex;
-	align-items:center;
-	justify-content: center;
-	background-size: cover;
-	background-position: center;
-}
 
-.banner a {
-	height:100%;
-	width:100%;
-}
 
-.banner a:hover {
-	text-decoration-line: none;
-}
 
-.home-content .banner {
-	height:500px;
-	border-radius:10px;
-}
+
 
 
 
