@@ -31,64 +31,60 @@
   <body>
 	  <div class='custom-header'>
 	  	<h6>
-	  		<a href="{% url 'about' %}">About Me</a> | <a href="{% url 'subscribe' %}">Subscribe</a> | <a href="{% url 'contact' %}">Contact Me</a>
+	  		<a href="{% url 'about' %}">About Me</a> | <a href="{% url 'subscribe' %}">Subscribe</a> | <a href="{% url 'contact' %}">Contact</a>
 	  	</h6>
-	  	<p></p>
 	  </div>
-	  <div class="custom-navbar-container">
-	  	<div class='custom-navbar-left'>
-	  	</div>
-	  	<div class='custom-navbar-mid'>
-			<a href="{% url 'blog:list' %}">
-		      	<div class='custom-nav-item'>
-		        	Blog
-		      	</div>
-	      	</a>
-	      	<a href="{% url 'gear:home' %}">
-		      	<div class="custom-nav-item">
-		        	Gear
-		      	</div>
-	      	</a>
-	      	<div class="custom-nav-img">
-	      		<a href="{% url 'home' %}">
-			    	<img class='rounded-circle border border-dark bg-sky' src="{% static 'images/logo.png' %}" width="80" height="80" alt="site logo">
-				</a>
-		  	</div>
-		  	<a href="{% url 'cooking:home' %}">
-		      	<div class="custom-nav-item">
-		        	Cooking
-		      	</div>
-	      	</a>
-	      	<a href="{% url 'trails:home' %}">
-		      	<div class="custom-nav-item">
-		        	Trails
-		      	</div>
-	      	</a>
-	   	</div>
-	    <div class='custom-navbar-right'>
-	  	</div>
-	  </div>
+	  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  	  <a class="navbar-brand order-4" href="{% url 'home' %}">
+	  	  	<img class='rounded-circle border border-dark bg-sky' src="{% static 'images/logo.png' %}" width="80" height="80" alt="site logo">
+	  	  </a>
+		  <button class="navbar-toggler order-5" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse order-3 collapse-1" id="navbarNav">
+		    <ul class="navbar-nav justify-content-end">
+		      <li class="nav-item">
+		        <a class='nav-link' href="{% url 'blog:list' %}">Blog</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class='nav-link' href="{% url 'gear:home' %}">Gear</a>
+		      </li>
+		    </ul>
+		  </div>
+		  <div class="collapse navbar-collapse order-6" id="navbarNav">
+		    <ul class="navbar-nav justify-content-start">
+		      <li class="nav-item">
+		        <a class='nav-link' href="{% url 'cooking:home' %}">Cooking</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class='nav-link' href="{% url 'trails:home' %}">Trails</a>
+		      </li>
+		    </ul>
+		  </div>
+		</nav>
 
 	{% block banner %}
 	{% endblock %}
 
-    <main class='content-main'>
-    	<div class='content-container'>
-		    {% block content %}
-		    {% endblock %}
-		</div>
-		<div class='sidebar'>
-			<div class='about-me-card'>
-				<div class='about-me-img'>
-					<a href="{% url 'about' %}">
-						<div class='about-me-filter'>
-							<h5>Learn More</h5>
-						</div>
-					</a>
+    <main>
+    	<div class='content-main'>
+    		<div class='content-container'>
+			    {% block content %}
+			    {% endblock %}
+		    </div>
+			<div class='sidebar'>
+				<div class='about-me-card'>
+					<div class='about-me-img'>
+						<a href="{% url 'about' %}">
+							<div class='about-me-filter'>
+								<h5>Learn More</h5>
+							</div>
+						</a>
+					</div>
+					<p>
+						Hi! My name is Tim and I am "self-taught" backpacker. I learned most of what I know the hard way - by making mistakes. Tim's Trails is the fruit of those mistakes, as well as a documentation of my adventures. <a href="{% url 'about' %}">Read more</a>
+					</p>
 				</div>
-				<p>
-					Hi! My name is Tim and I am "self-taught" backpacker. I learned most of what I know the hard way - by making mistakes. Tim's Trails is the fruit of those mistakes, as well as a documentation of my adventures. <a href="{% url 'about' %}">Read more</a>
-				</p>
 			</div>
 		</div>
   	</main>
@@ -122,16 +118,43 @@
 	<script>
 	  $(window).on('scroll', function() {
 	  	if ($(window).scrollTop() > 60) {
-	  		$(".custom-navbar-container").addClass("fixed-top navbar-scroll");
+	  		$(".navbar").addClass("fixed-top navbar-scroll");
 	  		$('.custom-header').addClass('custom-header-scroll');
-	  		$(".custom-nav-img").addClass("custom-nav-img-scroll");
+	  		$(".navbar-brand").addClass("custom-nav-img-scroll");
+	  		$(".collapse-1").on('show.bs.collapse', function(){
+			    $(".navbar-brand").addClass("navbar-brand-open");
+			    $(".navbar-brand").removeClass("navbar-brand-top-open");
+			});
+			$(".collapse-1").on('hide.bs.collapse', function(){
+			    $(".navbar-brand").removeClass("navbar-brand-open");
+			    $(".navbar-brand").removeClass("navbar-brand-top-open");
+			});
 	  	}
 	    else if ($(window).scrollTop() < 60) {
-	    	$(".custom-navbar-container").removeClass("fixed-top navbar-scroll");
+	    	$(".navbar").removeClass("fixed-top navbar-scroll");
 	    	$('.custom-header').removeClass('custom-header-scroll');
-	    	$(".custom-nav-img").removeClass("custom-nav-img-scroll");
-	    }
+	    	$(".navbar-brand").removeClass("custom-nav-img-scroll");
+	    	$(".collapse-1").on('show.bs.collapse', function(){
+			    $(".navbar-brand").removeClass("navbar-brand-open");
+			    $(".navbar-brand").addClass("navbar-brand-top-open");
+			});
+			$(".collapse-1").on('hide.bs.collapse', function(){
+			    $(".navbar-brand").removeClass("navbar-brand-open");
+			    $(".navbar-brand").removeClass("navbar-brand-top-open");
+			});
+		}
 	  });
+	</script>
+	<script type="text/javascript">
+		$(window).on('scroll', function() {
+			if ($(".navbar-brand").hasClass("navbar-brand-top-open") && $(window).scrollTop() > 60) {
+				$(".navbar-brand").addClass("navbar-brand-open");
+			}
+			else if ($(".navbar-brand").hasClass("navbar-brand-open") && $(window).scrollTop() < 60) {
+				$(".navbar-brand").removeClass("navbar-brand-open");
+				$(".navbar-brand").addClass("navbar-brand-top-open");
+			}
+		});
 	</script>
   </body>
 </html>

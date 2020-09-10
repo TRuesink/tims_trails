@@ -6,13 +6,13 @@
 
 {% block banner %}
 	<div class='banner' style='background-image: url("/static/images/trails_banner.jpg");'>
-		<h1 class='banner-title-text'>Contact Me</h1>
+		<h1 class='banner-title-text'>Contact</h1>
 	</div>
 {% endblock %}
 {% block content %}
 
 <div class='general-content'>
-	<h1>Contact Me</h1>
+	<h1>Contact</h1>
 	<form method="post" action="{% url 'contact' %}">
 		{% csrf_token %}
 		{{ form|crispy }}
