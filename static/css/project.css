@@ -225,11 +225,18 @@ hr {
 	background-color:white;
 	display:flex;
 	flex-direction:row;
-	justify-content:flex-start;
+	justify-content:space-between;
 	align-items: center;
 	padding-right:20px;
 	padding-left:20px;
 	padding-top:30px;
+}
+
+.insta-logo {
+	margin-bottom:20px;
+}
+
+.custom-header h6 {
 }
 
 .custom-header a {
@@ -237,6 +244,7 @@ hr {
 	color:grey;
 	font-size: 16px;
 	font-family:Bradley Hand !important;
+	order:2;
 }
 
 .custom-header-scroll {
@@ -324,11 +332,11 @@ hr {
 }
 
 .about-me-card {
-	height:600px;
+	height:500px;
 	background-color:white;
 	margin:10px;
-	border: 2px solid #D3D3D3;
-	border-radius:10px;
+	border: 1px solid #D3D3D3;
+	border-radius:5px;
 	display:flex;
 	flex-direction: column;
 	align-items:center;
@@ -344,7 +352,7 @@ hr {
 .about-me-img {
 	background-image: url("/static/images/about_me_1.jpg");
 	width:100%;
-	height:50%;
+	height:60%;
 	border-radius:10px;
 	background-size: cover;
 	background-position: center;
@@ -470,8 +478,6 @@ hr {
 
 
 
-
-
 /* ------ General Content ------ */
 .content-main {
 	display:flex;
@@ -486,14 +492,14 @@ hr {
 }
 
 .home-content, .general-content {
-	border: 2px solid #D3D3D3;
+	border: 1px solid #D3D3D3;
 	margin:10px;
 	padding-top:50px;
 	padding-bottom:50px;
 	padding-left:100px;
 	padding-right:100px;
 	background-color:white;
-	border-radius:10px;
+	border-radius:5px;
 	display:flex;
 	flex-direction:column;
 	justify-content: center;
@@ -861,6 +867,7 @@ hr {
 	}
 
 	.home-banner-filter p {
+		display:none;
 		margin-top:150px;
 		padding-left:20px;
 		padding-right:20px;
@@ -904,7 +911,17 @@ hr {
 	#reply-container {
 		margin-left:30px;
 	}
-	
+
+	.insta-logo {
+		margin-left:25px;
+	}
+
+}
+
+@media screen and (max-width: 420px) {
+	.custom-header h6 {
+		display:none;
+	}
 }
 
 

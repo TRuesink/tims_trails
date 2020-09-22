@@ -10,6 +10,7 @@ from .models import CustomUser
 from blog.models import Subscriber
 from blog.forms import SubscriberForm, ContactForm
 from django.core.mail import send_mail
+from django.contrib import messages
 
 '''
 class TTUserRegisterView(CreateView):
@@ -28,6 +29,7 @@ class HomeView(TemplateView):
 		view = SubscribeView.as_view()
 		s_form = SubscriberForm(request.POST)
 		if s_form.is_valid():
+			messages.success(request, 'Thank you for Subscribing!')
 			s_form.save()
 			s_form.send_email()
 		return view(request, *args, **kwargs)
@@ -56,6 +58,7 @@ class IndependentSubscribeView(FormView):
 	success_url = '/'
 
 	def form_valid(self, form):
+		messages.success(self.request, 'Thank you for Subscribing!')
 		form.send_email()
 		form.save()
 		return super().form_valid(form)
@@ -95,6 +98,7 @@ class ContactMeView(FormView):
 	success_url = '/'
 
 	def form_valid(self, form):
+		messages.success(self.request, 'Thank you for contacting me! I will be in touch soon')
 		form.send_email()
 		form.save()
 		return super().form_valid(form)

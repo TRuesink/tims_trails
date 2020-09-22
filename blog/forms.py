@@ -1,10 +1,10 @@
 from django import forms
 from .models import Post, Comment, Subscriber, Contact
 from django.core.mail import send_mail
+from captcha.fields import CaptchaField
 
 
 class CommentForm(forms.ModelForm):
-
 	class Meta:
 		model = Comment
 		fields = [
@@ -27,6 +27,7 @@ class CommentForm(forms.ModelForm):
 
 
 class SubscriberForm(forms.ModelForm):
+	captcha_field = CaptchaField()
 	class Meta:
 		model = Subscriber
 		fields = [
@@ -52,7 +53,7 @@ class SubscriberForm(forms.ModelForm):
 		)
 
 class ContactForm(forms.ModelForm):
-		
+	captcha_field = CaptchaField()
 	class Meta:
 		model = Contact
 		fields = [

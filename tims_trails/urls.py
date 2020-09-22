@@ -35,6 +35,7 @@ urlpatterns = [
     path(route='contact-me', view=TTUser_views.ContactMeView.as_view(), name='contact'),
     path('', include('tt_user.urls', namespace='tt_user')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path(r'^captcha/', include('captcha.urls')),
 ]
 
 if settings.DEBUG:

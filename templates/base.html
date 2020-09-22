@@ -31,8 +31,11 @@
   <body>
 	  <div class='custom-header'>
 	  	<h6>
-	  		<a href="{% url 'about' %}">About Me</a> | <a href="{% url 'subscribe' %}">Subscribe</a> | <a href="{% url 'contact' %}">Contact</a>
+	  		<a href="{% url 'about' %}">About</a> | <a href="{% url 'subscribe' %}">Subscribe</a> | <a href="{% url 'contact' %}">Contact</a>
 	  	</h6>
+	  	<a class='insta-logo' href='https://www.instagram.com/timstrails/'>
+	  		<img src="{% static 'images/instagram_logo.png' %}" width="30" height="30">
+	  	</a>
 	  </div>
 	  <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	  	  <a class="navbar-brand order-4" href="{% url 'home' %}">
@@ -63,6 +66,18 @@
 		  </div>
 		</nav>
 
+	{% if messages %}
+	    {% for message in messages %}
+	      <div class="alert-dismissible fade show alert alert-{{ message.tags }}">
+	      	{{ message }}
+	      	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+			</button>
+	  	  </div>
+	    {% endfor %}
+	  </ul>
+	{% endif %}
+
 	{% block banner %}
 	{% endblock %}
 
@@ -82,8 +97,19 @@
 						</a>
 					</div>
 					<p>
-						Hi! My name is Tim and I am "self-taught" backpacker. I learned most of what I know the hard way - by making mistakes. Tim's Trails is the fruit of those mistakes, as well as a documentation of my adventures. <a href="{% url 'about' %}">Read more</a>
+						Hi! My name is Tim and I am "self-taught" backpacker. I learned most of what I know the hard way - by making mistakes. And I've made a lot. But that also means I've learned a lot! <a href="{% url 'about' %}">Read more</a>
 					</p>
+				</div>
+				<div class='about-me-card'>
+					{% if tags %}
+						<h4>Popular Topics</h4>
+						<hr>
+						{% for tag in tags %}
+							<a href="{% url 'blog:tag-list' tag.slug %}">
+								<h5>{{tag}} ({{tag.num_times}})</h5>
+							</a>
+						{% endfor %}
+					{% endif %}
 				</div>
 			</div>
 		</div>
@@ -154,6 +180,18 @@
 				$(".navbar-brand").removeClass("navbar-brand-open");
 				$(".navbar-brand").addClass("navbar-brand-top-open");
 			}
+		});
+	</script>
+	<script>
+		$(document).ready(function () {
+			$(".collapse-1").on('show.bs.collapse', function(){
+			    $(".navbar-brand").removeClass("navbar-brand-open");
+			    $(".navbar-brand").addClass("navbar-brand-top-open");
+			});
+			$(".collapse-1").on('hide.bs.collapse', function(){
+			    $(".navbar-brand").removeClass("navbar-brand-open");
+			    $(".navbar-brand").removeClass("navbar-brand-top-open");
+			});
 		});
 	</script>
   </body>
