@@ -14,7 +14,11 @@ class PostListView(ListView):
 
 	def get_context_data(self, **kwargs):
 		context = super(PostListView, self).get_context_data(**kwargs)
-		context['tags'] = Post.tags.most_common()[:10]
+		common_tags = Post.tags.most_common()[:10]
+		for tag in common_tags:
+			
+		context['tags'] = common_tags
+
 		return context
 
 '''
