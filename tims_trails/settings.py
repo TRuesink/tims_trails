@@ -17,8 +17,8 @@ import json
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-with open(os.path.join(BASE_DIR, "config.json")) as config_file:
-        config = json.load(config_file)
+with open(os.path.join(BASE_DIR, "../config.json")) as config_file:
+    config = json.load(config_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -142,7 +142,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -163,9 +163,3 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = config['TT_USER']
 EMAIL_HOST_PASSWORD = config['TT_PASS']
 EMAIL_USE_TLS = True
-
-
-
-
-
-
